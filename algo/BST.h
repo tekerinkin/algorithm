@@ -14,9 +14,11 @@ using namespace std;
 template<class T>
 struct Node
 {
+  private:  
     Node* left;
     Node* right;
     T val;
+  public:
     Node(Node* l, Node* r, T& x) : left(l), right(r), val(x)
     {}
     explicit Node(T& x) : val(x)
@@ -30,47 +32,47 @@ struct Node
 template<class T>
 class BST
 {
-public:
     Node<T>* root;
+  public:
     explicit BST(T x)
     {
         root = new Node(x);
     }
-    void add(T x, Node<T>* v);
-    Node<T>* find(T x, Node<T>* v);
+    void add(T x , Node<T>* v);
+    Node<T>* find(T x , Node<T>* v);
     T min();
     T max();
 
 };
 
 template<class T>
-void BST<T>::add(T x, Node<T>* v)
+void BST<T>::add(T x , Node<T>* v)
 {
-    if(!v)
+    if(!root)
         v = new Node(x);
-    if(x < v->val)
+    if(x < root->val)
     {
-        if(v->left)
-            add(x,v->left);
+        if(root->left)
+            add(x,root->left);
         else
-            v->left = new Node(x);
+            root->left = new Node(x);
     }else{
-        if(v->right)
-            add(x,v->right);
+        if(root->right)
+            add(x,root->right);
         else
-            v->right = new Node(x);
+            root->right = new Node(x);
     }
 }
 
 template<class T>
-Node<T>* BST<T>::find(T x, Node<T>* v)
+Node<T>* BST<T>::find(T x,  Node<T>* v)
 {
-    if(v->val == x || v == nullptr)
-        return v;
-    if(x > v->val)
-        return find(x, v->right);
+    if(root->val == x || root == nullptr)
+        return root;
+    if(x > root->val)
+        return find(x, root>right);
     else
-        return find(x, v->left);
+        return find(x, root->left);
 }
 
 template<class T>
