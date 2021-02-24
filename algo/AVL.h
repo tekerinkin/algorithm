@@ -11,7 +11,7 @@
 using namespace std;
 
 
-struct node
+struct node //Create the class of tree's nodes, cause it is balanced, node should have height field
 {
     int key;
     unsigned char height;
@@ -26,18 +26,18 @@ struct node
 };
 
 
-unsigned char height(node* p)
+unsigned char height(node* p) // Return height of the node
 {
     return p ? p->height : 0;
 }
 
-int balance_factor(node* p)
+int balance_factor(node* p) // Return differ beetwen subtrees, the main indicator in AVL
 {
     return height(p->right)-height(p->left);
 }
 
 
-void fixHeight(node* p)
+void fixHeight(node* p) //Fix the height of node, obviously parent's should be max of his children's height plus 1
 {
     unsigned char hl = height(p->left);
     unsigned char hr = height(p->right);
@@ -45,23 +45,23 @@ void fixHeight(node* p)
 }
 
 
-node* rotateright(node* root)
-{
-    node* p = root;
-    node* q = p->left;
-    p->left = q->right;
-    q->right = p;
+node* rotateright(node* root) // p        ====>       q
+{                           //  /\                   / \
+    node* p = root;        //  q  r                 a   p
+    node* q = p->left;    //  / \                      / \
+    p->left = q->right;  //  a   b                     b  r
+    q->right = p;  
     fixHeight(p);
     fixHeight(q);
     return q;
 }
 
 
-node* rotateleft(node* root)
-{
-    node* q = root;
-    node* p = q->right;
-    q->right = p->left;
+node* rotateleft(node* root) // q        ====>         p
+{                           // / \                    / \
+    node* q = root;        // l   p                  q   b
+    node* p = q->right;   //     / \                / \
+    q->right = p->left;  //     a   b              l   a
     p->left = q;
     fixHeight(q);
     fixHeight(p);
@@ -69,10 +69,10 @@ node* rotateleft(node* root)
 }
 
 
-node* balance(node* root)
-{
-    node* p = root;
-    fixHeight(p);
+node* balance(node* root) // To balance AVL-tree we sould compose right rotation and left rotation to 
+{                         // get Big right rotation and Big left rotation
+    node* p = root;       // Left: if right child higher than left
+    fixHeight(p);        //  Right: if left child heigher than right
     if(balance_factor(p) == 2)
     {
         if(balance_factor(p->right) < 0)
@@ -89,9 +89,9 @@ node* balance(node* root)
 }
 
 
-node* insert(node* root, int k)
-{
-    node* p = root;
+node* insert(node* root, int k) //because avl is also search tree right > parent && left < parent
+{                              // so if new key is bigger than root we go to right subtree
+    node* p = root;           //  else go to left subtree
     if(!p) return new node(k);
     if(k > p->key)
         p->right = insert(p->right, k);
@@ -101,14 +101,14 @@ node* insert(node* root, int k)
 }
 
 
-node* findMinNode(node* root)
+node* findMinNode(node* root) // if think it is obvious
 {
     node* p = root;
-    return p->left ? findMinNode(p->left) : p;
+    return p->left ? findMinNode(p->left) : p; 
 }
 
 
-node* removeMin(node* root)
+node* removeMin(node* root) // look at findMinNode
 {
     node* p = root;
     if(p->left == nullptr)
@@ -118,7 +118,7 @@ node* removeMin(node* root)
 }
 
 
-node* remove(node* root, int k)
+node* remove(node* root, int k) // locate determine node, remove it and update and balance its children
 {
     node* p = root;
     if(!p)
@@ -141,7 +141,7 @@ node* remove(node* root, int k)
     return balance(p);
 }
 
-void inOrder(node* root)
+void inOrder(node* root) // just print AVL-tree;)
 {
     node* p = root;
     if(!p)
