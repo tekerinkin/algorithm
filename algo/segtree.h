@@ -9,9 +9,9 @@
 #include<vector>
 
 
-class seg_tree{
+class seg_tree{    //This data structure helps us to work with intervals in arrays
 private:
-    std::vector<int> tree_s;
+    std::vector<int> tree_s;    //In tnis implementation we keep our segment tree in array
     std::vector<int> tree_max;
     std::vector<int> tree_min;
 public:
