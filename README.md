@@ -5,3 +5,4 @@ Today there are:
   2. BST(Binary Search Tree)
   3. AVL-tree(Balanced Tree, where differ between heights of subtrees of one root not more than 1)
   4. Heap
+  5. Segment tree
