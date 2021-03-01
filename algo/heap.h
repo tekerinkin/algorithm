@@ -5,7 +5,7 @@
 #ifndef ALGO_HEAP_H
 #define ALGO_HEAP_H
 
-#endif //ALGO_HEAP_H
+
 #include<iostream>
 
 
@@ -134,3 +134,4 @@ int* HeapSort(int* a, int sz)
     }
     return h.ret();
 }
+#endif //ALGO_HEAP_H
