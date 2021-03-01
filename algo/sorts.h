@@ -5,7 +5,7 @@
 #ifndef C___SORTS_H
 #define C___SORTS_H
 
-#endif //C___SORTS_H
+
 
 #include <iostream>
 #include <vector>
@@ -66,3 +66,4 @@ void quicksort(vector<int>& arr, size_t l, size_t h)
     }
 }
 
+#endif //C___SORTS_H
