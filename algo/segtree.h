@@ -5,7 +5,7 @@
 #ifndef ALGO_SEGTREE_H
 #define ALGO_SEGTREE_H
 
-#endif //ALGO_SEGTREE_H
+
 #include<vector>
 
 
@@ -150,3 +150,4 @@ public:
         return combine(query(2*v, tl, m, l, m), query(2*v+1, m+1, tr, m+1, r));
     }
 };
+#endif //ALGO_SEGTREE_H
