@@ -5,7 +5,7 @@
 #ifndef C___AVL_H
 #define C___AVL_H
 
-#endif //C___AVL_H
+
 #include<iostream>
 
 using namespace std;
@@ -150,3 +150,4 @@ void inOrder(node* root) // just print AVL-tree;)
     cout << p->key << endl;
     inOrder(p->right);
 }
+#endif //C___AVL_H
