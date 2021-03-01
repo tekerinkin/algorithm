@@ -5,7 +5,7 @@
 #ifndef C___BST_H
 #define C___BST_H
 
-#endif //C___BST_H
+
 
 #include<iostream>
 
@@ -156,3 +156,4 @@ Node<T>* remove(Node<T>* tree, T k)
     }
     return tree;
 }
+#endif //C___BST_H
