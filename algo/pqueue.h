@@ -5,7 +5,7 @@
 #ifndef ALGO_PQUEUE_H
 #define ALGO_PQUEUE_H
 
-#endif //ALGO_PQUEUE_H
+
 #include "heap.h"
 
 
@@ -29,3 +29,4 @@ struct pqueue : private Heap
     }
 
 };
+#endif //ALGO_PQUEUE_H
